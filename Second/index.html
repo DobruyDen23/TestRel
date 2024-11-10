@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Relokia-test</title>
+</head>
+
+<body>
+    <div class="form-container">
+        
+        <!-- Прогрес-бар -->
+        <div class="progress-bar">
+            <div class="home">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.70692 0.293C8.51939 0.105529 8.26508 0.000213623 7.99992 0.000213623C7.73475 0.000213623 7.48045 0.105529 7.29292 0.293L0.292919 7.293C0.110761 7.4816 0.00996641 7.7342 0.0122448 7.9964C0.0145233 8.2586 0.119692 8.50941 0.3051 8.69482C0.490508 8.88023 0.741321 8.9854 1.00352 8.98767C1.26571 8.98995 1.51832 8.88916 1.70692 8.707L1.99992 8.414V15C1.99992 15.2652 2.10528 15.5196 2.29281 15.7071C2.48035 15.8946 2.7347 16 2.99992 16H4.99992C5.26514 16 5.51949 15.8946 5.70703 15.7071C5.89456 15.5196 5.99992 15.2652 5.99992 15V13C5.99992 12.7348 6.10528 12.4804 6.29281 12.2929C6.48035 12.1054 6.7347 12 6.99992 12H8.99992C9.26514 12 9.51949 12.1054 9.70703 12.2929C9.89456 12.4804 9.99992 12.7348 9.99992 13V15C9.99992 15.2652 10.1053 15.5196 10.2928 15.7071C10.4803 15.8946 10.7347 16 10.9999 16H12.9999C13.2651 16 13.5195 15.8946 13.707 15.7071C13.8946 15.5196 13.9999 15.2652 13.9999 15V8.414L14.2929 8.707C14.4815 8.88916 14.7341 8.98995 14.9963 8.98767C15.2585 8.9854 15.5093 8.88023 15.6947 8.69482C15.8801 8.50941 15.9853 8.2586 15.9876 7.9964C15.9899 7.7342 15.8891 7.4816 15.7069 7.293L8.70692 0.293Z" fill="#9CA3AF"/>
+                </svg>
+            </div>
+                <div class="breakup">></div>
+            <div class="progress" id="progress"></div>
+            <div class="step active">Contact info</div>
+                <div class="breakup">></div>
+            <div class="step">Quantity</div>
+                <div class="breakup">></div>
+            
+            <div class="step">Price</div>
+                <div class="breakup">></div>
+            <div class="step">Done</div>
+                
+        </div>
+
+        <!-- Форма з кроками -->
+        <form id="multiStepForm">
+            <!-- Крок 1 -->
+            <div class="form-step active">
+                <div class="header__title">
+                    <h2>Contact info</h2>
+                </div>
+                <div class="form-step_inner">
+
+                    <div class="name__info">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="" required>
+                    </div>
+                    <div class="email__info">
+                    <label for="email">Email <span>required</span></label>
+                    <input type="email" id="email" placeholder="" required>
+                    </div>
+
+                    <div class="phone__info">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" placeholder="">
+                    </div>
+                </div>
+
+                <div class="button__box">
+                    <button type="button" class="next-step"
+                
+                    onclick="validateStep1()">Continue</button>
+                </div>
+
+                    <div class="title__box">
+                        <div class="title">Title</div>
+                        <div class="subtitle">This is the description</div>
+                    </div>
+
+            </div>
+
+            <!-- Крок 2 -->
+            <div class="form-step">
+                <h2>Quantity</h2>
+
+                <div class="form-step_inner">
+                    <div class="quantity__inner">
+                        <label for="quantity">Quantity <span>required</span></label>
+                        <input type="number" id="quantity" placeholder="" min="1" max="1000" required>
+                    </div>
+                </div>
+
+                <div class="button__box">
+                    <button type="button" class="next-step" 
+                    onclick="validateStep2()">Continue</button>
+                    <button type="button" class="prev-step">&#x2190; Back</button>
+                </div>  
+
+                <div class="title__box">
+                    <div class="title">Title</div>
+                    <div class="subtitle">This is the description</div>
+                </div>
+
+            </div>
+
+            <!-- Крок 3 -->
+            <div class="form-step">
+                <h2>Price</h2>
+               
+                <div class="form-step_inner">
+                    <p id="priceDisplay"></p>
+                </div>
+                <div class="button__box">
+                    <button type="button" class="next-step" onclick="sendEmail()">Send to email</button>
+                    <button type="button" class="prev-step">Back</button>
+                </div>
+
+                <div class="title__box">
+                    <div class="title">Title</div>
+                    <div class="subtitle">This is the description</div>
+                </div>
+                
+            </div>
+
+            <!-- Крок 4 -->
+            <div class="form-step">
+                <h2>Done</h2>
+                
+                <div class="container__resultMassage">
+                    <div id="resultMessage"></div>
+                </div>
+                <div class="button__box">
+                    <button type="button" onclick="resetForm()">Start again</button>
+                </div>
+
+                    <div class="title__box__second">
+                        <div class="title">Title</div>
+                        <div class="subtitle">This is the description
+                        </div>
+                    </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="assets/script/script.js"></script>
+</body>
+</html>
